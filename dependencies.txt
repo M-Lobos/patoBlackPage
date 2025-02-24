@@ -1,0 +1,9 @@
+npm init -y             #initialize node environment for the project
+npm i express           #installs express library 
+npm i nodemon -D        #installs nodemon package so at any change the server will be restarted 
+npm i bcrypt            #installs bcrypt library, hashes and stores passwords
+npm i cors              #installs cors library, allows servers to autorize Cross-Origin Resource Sharing
+npm i jsonwebtoken      #installs jsonwebtoken library used for authentication and authorization, in a safe way
+npm i pg                #installs pg library to connect pg DB with the backend
+npm i sequelize         #installs sequelize library, Object-Relational Mapping (ORM) library for node, allows interaction with DB using Js.
+npm i dotenv            #installs dotenv library, loads environment variables from a .env file into a proyect
