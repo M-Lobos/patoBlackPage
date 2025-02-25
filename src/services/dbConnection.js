@@ -1,4 +1,5 @@
 import { dbConfig } from "../config/db.config.js";
+import { InternalServerError } from "../errors/TypeError.js";
 
 export const dbConnection = async () => {
     try {
@@ -7,7 +8,6 @@ export const dbConnection = async () => {
 
         console.log('Conection to Postgres from Sequelize ⚫🦆')
     } catch (error) {
-        console.error('Something exploded 💀', error);
-        process.exit(1)
+        throw new InternalServerError('Something exploded 💀', 500, 'We cannot connect from sequelize to DB, look up for the obvious reasons first; DB name, endpoints, etc');
     }
 }

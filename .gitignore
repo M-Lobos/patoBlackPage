@@ -1,3 +1,4 @@
-dependencies
+libraries.txt
 node_modules
 .env
+queries.txt
