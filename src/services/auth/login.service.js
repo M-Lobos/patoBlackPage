@@ -1,6 +1,6 @@
 import jwt from 'jsonwebtoken';
 
-import { User } from '../../models/user.model.js';
+import { User } from '../../models/User.model.js';
 import { comparePassword } from './hash.service.js';
 import { config } from '../../config/env.config.js';
 import { normalizeUserPrivateData } from '../../utils/normalize/userNorm.js';

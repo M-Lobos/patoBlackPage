@@ -1,0 +1,40 @@
+{
+    "src": {
+      "config": {
+        "db.js": "Handles database connection with Sequelize",
+        "env.js": "Loads environment variables"
+      },
+      "models": {
+        "User.model.js": "Defines the User model with globalAdmin and admin roles",
+        "Post.model.js": "Future: Defines the Post model for content management"
+      },
+      "routes": {
+        "auth.routes.js": "Handles login and register endpoints",
+        "admin.routes.js": "CRUD operations for admin users (controlled by globalAdmin)",
+        "post.routes.js": "Future: Routes for managing posts"
+      },
+      "controllers": {
+        "user.controller.js": "Manages user actions (create, update, delete admins)",
+        "auth.controller.js": "Handles authentication logic",
+        "post.controller.js": "Future: Handles post-related operations"
+      },
+      "middleware": {
+        "auth.middleware.js": "Validates JWT tokens and attaches user data to requests",
+        "role.middleware.js": "Restricts access based on globalAdmin/admin roles"
+      },
+      "services": {
+        "auth": {
+          "hash.service.js": "Handles password hashing",
+          "register.service.js": "Handles user registration logic",
+          "login.service.js": "Handles user login logic"
+        }
+      },
+      "errors": {
+        "AuthError.js": "Handles authentication errors",
+        "TypeError.js": "Handles general type errors"
+      },
+      "app.js": "Main Express application entry point",
+      "server.js": "Starts the server and initializes the database"
+    }
+  }
+  
