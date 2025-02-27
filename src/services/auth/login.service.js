@@ -8,6 +8,8 @@ import { AuthError } from '../../errors/TypeError.js';
 
 const { secretKey } = config;
 
+console.log("JWT Secret Key:", secretKey);
+
 export const loginService = async({ email, password }) => {
     try {
         const user = await User.findOne({ where: { email } });

@@ -2,6 +2,7 @@ import jwt from "jsonwebtoken";
 import { User } from "../models/User.model.js";
 
 export const verifyToken = async (req, res, next) => {
+    console.log(req.headers.authorization);
     try {
         const authHeader = req.headers.authorization;
         const token = authHeader && authHeader.startsWith("Bearer ") 

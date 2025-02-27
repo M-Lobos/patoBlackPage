@@ -1,4 +1,5 @@
 libraries.txt
 node_modules
 .env
-queries.txt
+queriesOnPosgre.txt
+postmanTest.txt
