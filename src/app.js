@@ -6,8 +6,8 @@ import router from './routes/routes.js';
 
 const app = express()
 const PORT = process.env.PORT || 4000
-// Middleware to parse JSON request bodies  
 
+// Middleware to parse JSON request bodies  
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 

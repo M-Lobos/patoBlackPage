@@ -4,8 +4,7 @@ dotenv.config();
 
 export const config = {
     port: process.env.PORT || 4000,
-    secretKey: process.env.SECRET_KEY || 'defaultSecretKey',
-
+    secretKey: process.env.SECRET_KEY,
     db: {
         name: process.env.DB_NAME || 'database',
         user: process.env.DB_USER || 'user',
@@ -15,3 +14,4 @@ export const config = {
         dialect: process.env.DB_DIALECT || 'postgres'
     }
 };
+

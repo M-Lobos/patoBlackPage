@@ -39,4 +39,4 @@ export class AuthError extends CustomError {
             details
         );
     }
-}
+};

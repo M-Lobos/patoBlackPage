@@ -8,8 +8,6 @@ import { AuthError } from '../../errors/TypeError.js';
 
 const { secretKey } = config;
 
-console.log("JWT Secret Key:", secretKey);
-
 export const loginService = async({ email, password }) => {
     try {
         const user = await User.findOne({ where: { email } });
@@ -23,21 +21,23 @@ export const loginService = async({ email, password }) => {
         }
 
         const privateUser  = normalizeUserPrivateData(user);
+        
         const token = jwt.sign(
             { 
                 id: user.id, 
                 email: user.email,
-                role: user.role}, 
-                secretKey,
+                role: user.role
+            }, 
+            secretKey,
             { expiresIn: '1h' }
         );
+        
 
         return {
             token,
             user: privateUser 
         };
     } catch (error) {
-        
         throw new AuthError('Login not authorized', 500, error); 
     }
 };

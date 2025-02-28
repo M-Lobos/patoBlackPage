@@ -30,12 +30,15 @@ export const normalizeUserData = (email, password, generalData = {}) => {
 
 
 export const normalizeUserPrivateData = (user) => {
-    const { id, firstName, lastName, email } = user;
+    const { id, firstName, lastName, email, role, createdAt, updatedAt } = user;
 
     return {
         id,
         firstName,
         lastName,
-        email
+        email,
+        role,  // Include role if needed
+        createdAt,
+        updatedAt
     };
 };

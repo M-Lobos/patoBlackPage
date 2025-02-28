@@ -1,5 +1,5 @@
 import { Router } from "express";
-import { verifyToken, isGlobalAdmin } from "../middlewares/auth.middleware.js";
+import { authMiddleware, isGlobalAdmin } from "../middlewares/auth.middleware.js";
 import { createUser, 
         updateUser,
         deleteUserById,
@@ -10,11 +10,11 @@ import { createUser,
 const router = Router();
 
 // Only GlobalAdmins can access these routes
-router.post("/create", verifyToken, isGlobalAdmin, createUser);
-router.get("/", verifyToken, isGlobalAdmin, getAdmins);
+router.post("/create", authMiddleware, isGlobalAdmin, createUser);
+/* router.get("/", verifyToken, isGlobalAdmin, getAdmins);
 router.get("/find-post", verifyToken, isGlobalAdmin, findPostByUser);
 router.put("/:id", verifyToken, isGlobalAdmin, updateUser);
-router.delete("/:id", verifyToken, isGlobalAdmin, deleteUserById);
+router.delete("/:id", verifyToken, isGlobalAdmin, deleteUserById); */
 
 // routes that can be accessed by any user/admin
 
