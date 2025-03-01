@@ -165,7 +165,7 @@ export const createUser = async (req, res) => {
 export const getAdmins = async (req, res) => {
     try {
         const admins = await User.findAll({
-            where: { role: ["Admin", "GlobalAdmin"] }, // Filter only Admins & GlobalAdmins
+            where: { role: ["admin", "globalAdmin"] }, // Filter only Admins & GlobalAdmins
             attributes: { exclude: ["password"] } // Exclude password for security
         });
         return res.status(200).json(admins);
@@ -190,7 +190,7 @@ export const updateUser = async (req, res, next) => {
         }
 
         // Prevent Admin from modifying roles
-        if (role && requestingUser.role !== "GlobalAdmin") {
+        if (role && requestingUser.role !== "globalAdmin") {
             return res.status(403).json({ message: "You cannot modify roles ❌" });
         }
 
@@ -200,13 +200,13 @@ export const updateUser = async (req, res, next) => {
         }
 
         // GlobalAdmin can update any user
-        if (requestingUser.role === "GlobalAdmin") {
+        if (requestingUser.role === "globalAdmin") {
             await userToUpdate.update(updateData);
             return res.status(200).json({ message: "User updated successfully 🎉", user: userToUpdate });
         }
 
         // Admin can update only other Admins (excluding role changes)
-        if (requestingUser.role === "Admin" && userToUpdate.role === "Admin") {
+        if (requestingUser.role === "admin" && userToUpdate.role === "admin") {
             await userToUpdate.update(updateData);
             return res.status(200).json({ message: "User updated successfully 🎉", user: userToUpdate });
         }
@@ -234,7 +234,7 @@ export const deleteUserById = async (req, res) => {
         }
 
         // GlobalAdmin can delete anyone
-        if (requestingUser.role === "GlobalAdmin") {
+        if (requestingUser.role === "globalAdmin") {
             await userToDelete.destroy();
             return res.status(200).json({ message: "User deleted successfully" });
         }
