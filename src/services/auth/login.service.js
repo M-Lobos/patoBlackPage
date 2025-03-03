@@ -11,11 +11,13 @@ const { secretKey } = config;
 export const loginService = async({ email, password }) => {
     try {
         const user = await User.findOne({ where: { email } });
+        console.log('User Found:', user);
         if (!user) {
             throw new AuthError('Usuario no encontrado', 404);
         }
 
         const passwordMatch = await comparePassword(password, user.password);
+        console.log('Password Match:', passwordMatch);
         if (!passwordMatch) {
             throw new AuthError('Contraseña incorrecta', 401);
         }

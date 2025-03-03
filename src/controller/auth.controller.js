@@ -31,7 +31,9 @@ export const login = async(req, res, next) => {
             data: { user, token }
         });
     } catch (error) {
-        next(new AuthError('Error in login User', 500, error));
+        console.error('Login Error:', error);  // <-- Log the real error
+        next(error);  // <-- Pass the original error instead of wrapping it
+        /* next(new AuthError('Error in login User', 500, error)); */
     }
 };
 
