@@ -33,7 +33,7 @@ export const loginService = async({ email, password }) => {
             secretKey,
             { expiresIn: '1h' }
         );
-        
+        console.log('Secret Key:', secretKey);
 
         return {
             token,
