@@ -11,15 +11,15 @@ const { secretKey } = config;
 export const loginService = async({ email, password }) => {
     try {
         const user = await User.findOne({ where: { email } });
-        console.log('User Found:', user);
+        
         if (!user) {
-            throw new AuthError('Usuario no encontrado', 404);
+            throw new AuthError('User not found', 404);
         }
 
         const passwordMatch = await comparePassword(password, user.password);
-        console.log('Password Match:', passwordMatch);
+        
         if (!passwordMatch) {
-            throw new AuthError('Contraseña incorrecta', 401);
+            throw new AuthError('Incorrect Password', 401);
         }
 
         const privateUser  = normalizeUserPrivateData(user);
@@ -33,7 +33,7 @@ export const loginService = async({ email, password }) => {
             secretKey,
             { expiresIn: '1h' }
         );
-        console.log('Secret Key:', secretKey);
+        
 
         return {
             token,

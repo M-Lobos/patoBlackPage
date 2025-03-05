@@ -15,10 +15,10 @@ export const initializeUser = async (dbConfig) => {
             email: {
                 type: DataTypes.STRING,
                 allowNull: false,
-                unique: { msg: "El correo electrónico ingresado ya está en uso 🎃" },
+                unique: { msg: "❌ Email already exists " },
                 validate: {
-                    notEmpty: { msg: "El correo no puede ser un campo vacío 🧨" },
-                    isEmail: { msg: "Correo no válido. 😣" }
+                    notEmpty: { msg: "❌ Email cannot be empty " },
+                    isEmail: { msg: "❌ Email no valid. " }
                 },
             },
             password: {
@@ -54,6 +54,5 @@ export const initializeUser = async (dbConfig) => {
         });
         console.log("✅ Default globalAdmin created!");
     }
-
 }
 

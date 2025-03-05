@@ -5,37 +5,30 @@
  */
 export const destructuringUserData = (data) => {
     const {
-        firstName,
-        lastName,
+        role,
         email,
         password,
     } = data;
 
-    const globalDataUser = {
-        firstName,
-        lastName,
-    };
 
-    return [globalDataUser, email, password];
+    return [role, email, password];
 };
 
 
-export const normalizeUserData = (email, password, generalData = {}) => {
+export const normalizeUserData = (email, password, role) => {
     return {
         email, 
         password,
-        ...generalData
+        role
     };
 };
 
 
 export const normalizeUserPrivateData = (user) => {
-    const { id, firstName, lastName, email, role, createdAt, updatedAt } = user;
+    const { id, email, role, createdAt, updatedAt } = user;
 
     return {
         id,
-        firstName,
-        lastName,
         email,
         role,  // Include role if needed
         createdAt,

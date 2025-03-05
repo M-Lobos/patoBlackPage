@@ -10,7 +10,7 @@ export const hashPassword = async (plainPassword) => {
 
         return hashedPassword;
     } catch (error) {
-        throw new InternalServerError('Cannot encryopt password', 500, error);
+        throw new InternalServerError('Cannot encrypt password', 500, error);
     }
 };
 
